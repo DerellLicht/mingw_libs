@@ -17,7 +17,8 @@ modules in Windows OS.  These functions provide access to performance data from 
 lib: libdbghelp.a  
 inc: DbgHelp.h  
 This is required in order to access data for the SymFromAddr() function.
-Notes related to this function are found at&nbsp;<A HREF="http://www.debuginfo.com/examples/src/SymFromAddr.cpp">SymFromAddr</A>&nbsp;here<br>
+Notes related to this function are found at&nbsp;
+<A HREF="http://www.debuginfo.com/examples/src/SymFromAddr.cpp">this</A>&nbsp;site<br>
 
 This example looks up a symbol by address and displays some simple information about it. 
 
