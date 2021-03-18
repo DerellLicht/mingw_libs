@@ -15,7 +15,8 @@ lib: libpdh.a
 inc: pdh.h  
 Contains functions which provide access to the Performance Data Helper (PDH)
 modules in Windows OS.  
-These functions provide access to performance data from the system.
+These functions provide access to performance data from the system.  
+Examples of some of these pdh functions can be seen in my DerBar status-display utility.
 
 **DbgHelp library**  
 lib: libdbghelp.a  
