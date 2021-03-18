@@ -1,10 +1,13 @@
 ## Derell Licht's commonly-used libraries in mingw format
 
+For each of these libraries, copy the .a file to <mingw_base_dir>\lib  
+and copy the .h file to <mingw_base_dir>\include
+
 ### Contents
 
-**htmlhelp library**
-lib: libhtmlhelp.a
-inc: htmlhelp.h
+**htmlhelp library**  
+lib: libhtmlhelp.a  
+inc: htmlhelp.h  
 contains mainly the HtmlHelpA() function, which displays an html-based .CHM help file
 
 **pdh library**  
