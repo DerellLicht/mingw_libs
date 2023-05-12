@@ -37,4 +37,9 @@ application.
 Note that libzplay.dll will need to be distributed with the application,
 since it does not come with Windows.  
 
+Original source for libZPlay are found at&nbsp;
+<A HREF="http://libzplay.sourceforge.net/">this</A>&nbsp;site<br>
+
+
+
 
