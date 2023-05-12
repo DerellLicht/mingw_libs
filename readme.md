@@ -28,13 +28,13 @@ Notes related to this function are found at&nbsp;
 This example looks up a symbol by address and displays some simple information about it. 
 
 **ZPlay library**  
-lib: libzplay.a
-inc: libzplay.h
-dll: libzplay.dll
+lib: libzplay.a  
+inc: libzplay.h  
+dll: libzplay.dll  
 This library enables playback of .mp3, .wav, .flac audio files from a WinAPI
-application.
+application.  
 
 Note that libzplay.dll will need to be distributed with the application,
-since it does not come with Windows.
+since it does not come with Windows.  
 
 
