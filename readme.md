@@ -27,7 +27,7 @@ Notes related to this function are found at&nbsp;
 
 This example looks up a symbol by address and displays some simple information about it. 
 
-**ZPlay library**
+**ZPlay library**  
 lib: libzplay.a
 inc: libzplay.h
 dll: libzplay.dll
