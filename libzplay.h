@@ -160,45 +160,45 @@
 */
 
 #ifndef _LIBZPLAY_H__
-#define _LIBZPLAY_H__
+#define _LIBZPLAY_H__   // NOLINT
 
 
 /*
-*	Define LIB_ZPLAY_STATIC to build static library.
+*  Define LIB_ZPLAY_STATIC to build static library.
 *
-*	Define LIB_ZPLAY_DYNAMIC to build dynamic library exporting functions with __declspec (dllexport)
+*  Define LIB_ZPLAY_DYNAMIC to build dynamic library exporting functions with __declspec (dllexport)
 *
-*	Define LIB_ZPLAY_DYNAMIC and LIB_ZPLAY_EXPORT_WITH_DEF_FILE   to disable __declspec (dllexport)
-*	so you can export functions with def file.
+*  Define LIB_ZPLAY_DYNAMIC and LIB_ZPLAY_EXPORT_WITH_DEF_FILE   to disable __declspec (dllexport)
+*  so you can export functions with def file.
 *
-*	HOW TO USE THIS LIBRARY:
+*  HOW TO USE THIS LIBRARY:
 *
-*	If there is nothing defined, functions are using __declspec (dllimport) and you need
-*	dynamic version ( dll file ) of libzplay library.
+*  If there is nothing defined, functions are using __declspec (dllimport) and you need
+*  dynamic version ( dll file ) of libzplay library.
 *
-*	Define LIB_ZPLAY_STATIC to disable __declspec (dllimport) and use library as static library.
+*  Define LIB_ZPLAY_STATIC to disable __declspec (dllimport) and use library as static library.
 *
 *
-*	By default, this library is configured to dynamicly link with your application using  __declspec (dllimport)
+*  By default, this library is configured to dynamicly link with your application using  __declspec (dllimport)
 *
-*	So, if you need to link with static version of this library define LIB_ZPLAY_STATIC
+*  So, if you need to link with static version of this library define LIB_ZPLAY_STATIC
 *
 */
 
 
 
 #ifdef LIB_ZPLAY_STATIC
-	#define W_DECLSPEC
-#else	
-	#ifdef LIB_ZPLAY_DYNAMIC
-		#ifdef LIB_ZPLAY_EXPORT_WITH_DEF_FILE
-			#define W_DECLSPEC
-		#else
-			#define W_DECLSPEC __declspec (dllexport)
-		#endif
-	#else
-		#define W_DECLSPEC __declspec (dllimport)
-	#endif
+   #define W_DECLSPEC
+#else 
+   #ifdef LIB_ZPLAY_DYNAMIC
+      #ifdef LIB_ZPLAY_EXPORT_WITH_DEF_FILE
+         #define W_DECLSPEC
+      #else
+         #define W_DECLSPEC __declspec (dllexport)
+      #endif
+   #else
+      #define W_DECLSPEC __declspec (dllimport)
+   #endif
 #endif
 
 
@@ -209,17 +209,17 @@ namespace libZPlay {
 
 enum TStreamFormat
 {
-		sfUnknown = 0,
-		sfMp3 = 1,
-		sfOgg = 2,
-		sfWav = 3,
-		sfPCM = 4,
-		sfFLAC = 5,
-		sfFLACOgg = 6,
-		sfAC3 = 7,
-		sfAacADTS = 8,
-		sfWaveIn = 9,
-		sfAutodetect = 1000
+      sfUnknown = 0,
+      sfMp3 = 1,
+      sfOgg = 2,
+      sfWav = 3,
+      sfPCM = 4,
+      sfFLAC = 5,
+      sfFLACOgg = 6,
+      sfAC3 = 7,
+      sfAacADTS = 8,
+      sfWaveIn = 9,
+      sfAutodetect = 1000
 };
 
 
@@ -228,156 +228,156 @@ enum TStreamFormat
 
 enum TFFTGraphSize
 {
-	FFTGraphMinWidth = 100,
-	FFTGraphMinHeight = 60
+   FFTGraphMinWidth = 100,
+   FFTGraphMinHeight = 60
 };
 
 
 enum TBMPDetectionMethod
 {
-	dmPeaks = 0,
-	dmAutoCorrelation = 1
+   dmPeaks = 0,
+   dmAutoCorrelation = 1
 };
 
 
 enum TFFTGraphHorizontalScale
 {
-	gsLogarithmic = 0,
-	gsLinear = 1
+   gsLogarithmic = 0,
+   gsLinear = 1
 };
 
 
 enum TSeekMethod
 {
-	smFromBeginning = 1,
-	smFromEnd = 2,
-	smFromCurrentForward = 4,
-	smFromCurrentBackward = 8
+   smFromBeginning = 1,
+   smFromEnd = 2,
+   smFromCurrentForward = 4,
+   smFromCurrentBackward = 8
 };
 
 
 
 enum TTimeFormat
 {
-	tfMillisecond = 1,
-	tfSecond = 2,
-	tfHMS = 4,
-	tfSamples = 8
+   tfMillisecond = 1,
+   tfSecond = 2,
+   tfHMS = 4,
+   tfSamples = 8
 };
 
 typedef struct {
-	unsigned int hour;
-	unsigned int minute;
-	unsigned int second;
-	unsigned int millisecond;
+   unsigned int hour;
+   unsigned int minute;
+   unsigned int second;
+   unsigned int millisecond;
 } TStreamHMSTime;
 
 
 typedef struct {
-	unsigned int sec;
-	unsigned int ms;
-	unsigned int samples;
-	TStreamHMSTime hms;
+   unsigned int sec;
+   unsigned int ms;
+   unsigned int samples;
+   TStreamHMSTime hms;
 } TStreamTime;
 
 
 typedef struct {
-	int nLeftDelay;	
-	int nLeftSrcVolume;	
-	int nLeftEchoVolume;
-	int nRightDelay;
-	int nRightSrcVolume;
-	int nRightEchoVolume;
+   int nLeftDelay;   
+   int nLeftSrcVolume;  
+   int nLeftEchoVolume;
+   int nRightDelay;
+   int nRightSrcVolume;
+   int nRightEchoVolume;
 } TEchoEffect;
 
 
 enum TWaveOutFormat
 {
-	format_invalid = 0,
-	format_11khz_8bit_mono = 1,
-	format_11khz_8bit_stereo = 2,
-	format_11khz_16bit_mono = 4,
-	format_11khz_16bit_stereo = 8,
-	format_22khz_8bit_mono = 16,
-	format_22khz_8bit_stereo = 32,
-	format_22khz_16bit_mono = 64,
-	format_22khz_16bit_stereo = 128,
-	format_44khz_8bit_mono = 256,
-	format_44khz_8bit_stereo = 512,
-	format_44khz_16bit_mono = 1024,
-	format_44khz_16bit_stereo = 2048
+   format_invalid = 0,
+   format_11khz_8bit_mono = 1,
+   format_11khz_8bit_stereo = 2,
+   format_11khz_16bit_mono = 4,
+   format_11khz_16bit_stereo = 8,
+   format_22khz_8bit_mono = 16,
+   format_22khz_8bit_stereo = 32,
+   format_22khz_16bit_mono = 64,
+   format_22khz_16bit_stereo = 128,
+   format_44khz_8bit_mono = 256,
+   format_44khz_8bit_stereo = 512,
+   format_44khz_16bit_mono = 1024,
+   format_44khz_16bit_stereo = 2048
 };
 
 
 enum TWaveOutFunctionality
 {
-	supportPitchControl = 1,
-	supportPlaybackRateControl = 2,
-	supportVolumeControl = 4,
-	supportSeparateLeftRightVolume = 8,
-	supportSync = 16,
-	supportSampleAccuratePosition = 32,
-	supportDirectSound = 6
+   supportPitchControl = 1,
+   supportPlaybackRateControl = 2,
+   supportVolumeControl = 4,
+   supportSeparateLeftRightVolume = 8,
+   supportSync = 16,
+   supportSampleAccuratePosition = 32,
+   supportDirectSound = 6
 }; 
 
 
 typedef struct {
-	unsigned int ManufacturerID;
-	unsigned int ProductID;
-	unsigned int DriverVersion;
-	unsigned int Formats;
-	unsigned int Channels;
-	unsigned int Support;
-	char *ProductName;
+   unsigned int ManufacturerID;
+   unsigned int ProductID;
+   unsigned int DriverVersion;
+   unsigned int Formats;
+   unsigned int Channels;
+   unsigned int Support;
+   char *ProductName;
 } TWaveOutInfo;
 
 
 typedef struct {
-	unsigned int ManufacturerID;
-	unsigned int ProductID;
-	unsigned int DriverVersion;
-	unsigned int Formats;
-	unsigned int Channels;
-	unsigned int Support;
-	wchar_t *ProductName;
+   unsigned int ManufacturerID;
+   unsigned int ProductID;
+   unsigned int DriverVersion;
+   unsigned int Formats;
+   unsigned int Channels;
+   unsigned int Support;
+   wchar_t *ProductName;
 } TWaveOutInfoW;
 
 
 
 typedef struct {
-	unsigned int ManufacturerID;
-	unsigned int ProductID;
-	unsigned int DriverVersion;
-	unsigned int Formats;
-	unsigned int Channels;
-	char *ProductName;
+   unsigned int ManufacturerID;
+   unsigned int ProductID;
+   unsigned int DriverVersion;
+   unsigned int Formats;
+   unsigned int Channels;
+   char *ProductName;
 } TWaveInInfo;
 
 
 typedef struct {
-	unsigned int ManufacturerID;
-	unsigned int ProductID;
-	unsigned int DriverVersion;
-	unsigned int Formats;
-	unsigned int Channels;
-	wchar_t *ProductName;
+   unsigned int ManufacturerID;
+   unsigned int ProductID;
+   unsigned int DriverVersion;
+   unsigned int Formats;
+   unsigned int Channels;
+   wchar_t *ProductName;
 } TWaveInInfoW;
 
 
 
 typedef struct {
-	int fPlay;
-	int fPause;
-	int fEcho;
-	int fEqualizer;	
-	int fVocalCut;
-	int fSideCut;
-	int fChannelMix;
-	int fSlideVolume;
-	int nLoop;
-	int fReverse;
-	int nSongIndex;
-	int nSongsInQueue;
+   int fPlay;
+   int fPause;
+   int fEcho;
+   int fEqualizer;   
+   int fVocalCut;
+   int fSideCut;
+   int fChannelMix;
+   int fSlideVolume;
+   int nLoop;
+   int fReverse;
+   int nSongIndex;
+   int nSongsInQueue;
 } TStreamStatus;
 
 
@@ -386,192 +386,192 @@ typedef struct {
 
 enum TID3Version
 {
-	id3Version1 = 1,
-	id3Version2 = 2
+   id3Version1 = 1,
+   id3Version2 = 2
 };
 
 
 
 typedef struct {
-	char *Title;
-	char *Artist;
-	char *Album;
-	char *Year;
-	char *Comment;
-	char *TrackNum; 
-	char *Genre;
+   char *Title;
+   char *Artist;
+   char *Album;
+   char *Year;
+   char *Comment;
+   char *TrackNum; 
+   char *Genre;
 } TID3Info;
 
 
 typedef struct {
-	unsigned int PicturePresent;
-	unsigned int CanDrawPicture;
-	char *MIMEType;
-	int PictureType;
-	char *Description;
-	void *PictureData;
-	unsigned int PictureDataSize;
-	void *hBitmap;
-	unsigned int Width;
-	unsigned int Height;
-	char reserved[128];
+   unsigned int PicturePresent;
+   unsigned int CanDrawPicture;
+   char *MIMEType;
+   int PictureType;
+   char *Description;
+   void *PictureData;
+   unsigned int PictureDataSize;
+   void *hBitmap;
+   unsigned int Width;
+   unsigned int Height;
+   char reserved[128];
 } TID3Picture;
 
 typedef struct {
-	unsigned int PicturePresent;
-	unsigned int CanDrawPicture;
-	wchar_t *MIMEType;
-	int PictureType;
-	wchar_t *Description;
-	void *PictureData;
-	unsigned int PictureDataSize;
-	void *hBitmap;
-	unsigned int Width;
-	unsigned int Height;
-	char reserved[128];
+   unsigned int PicturePresent;
+   unsigned int CanDrawPicture;
+   wchar_t *MIMEType;
+   int PictureType;
+   wchar_t *Description;
+   void *PictureData;
+   unsigned int PictureDataSize;
+   void *hBitmap;
+   unsigned int Width;
+   unsigned int Height;
+   char reserved[128];
 } TID3PictureW;
 
 typedef struct {
-	char *Title;
-	char *Artist;
-	char *Album;
-	char *Year;
-	char *Comment;
-	char *TrackNum; 
-	char *Genre;
-	char *AlbumArtist;
-	char *Composer;
-	char *OriginalArtist;
-	char *Copyright;
-	char *URL;
-	char *Encoder;
-	char *Publisher;
-	unsigned int BPM;
-	TID3Picture Picture;
-	char reserved[128];
+   char *Title;
+   char *Artist;
+   char *Album;
+   char *Year;
+   char *Comment;
+   char *TrackNum; 
+   char *Genre;
+   char *AlbumArtist;
+   char *Composer;
+   char *OriginalArtist;
+   char *Copyright;
+   char *URL;
+   char *Encoder;
+   char *Publisher;
+   unsigned int BPM;
+   TID3Picture Picture;
+   char reserved[128];
 } TID3InfoEx;
 
 typedef struct {
-	wchar_t *Title;
-	wchar_t *Artist;
-	wchar_t *Album;
-	wchar_t *Year;
-	wchar_t *Comment;
-	wchar_t *TrackNum; 
-	wchar_t *Genre;
-	wchar_t *AlbumArtist;
-	wchar_t *Composer;
-	wchar_t *OriginalArtist;
-	wchar_t *Copyright;
-	wchar_t *URL;
-	wchar_t *Encoder;
-	wchar_t *Publisher;
-	unsigned int BPM;
-	TID3PictureW Picture;
-	char reserved[128];
+   wchar_t *Title;
+   wchar_t *Artist;
+   wchar_t *Album;
+   wchar_t *Year;
+   wchar_t *Comment;
+   wchar_t *TrackNum; 
+   wchar_t *Genre;
+   wchar_t *AlbumArtist;
+   wchar_t *Composer;
+   wchar_t *OriginalArtist;
+   wchar_t *Copyright;
+   wchar_t *URL;
+   wchar_t *Encoder;
+   wchar_t *Publisher;
+   unsigned int BPM;
+   TID3PictureW Picture;
+   char reserved[128];
 } TID3InfoExW;
 
 
 typedef struct {
-	wchar_t *Title;
-	wchar_t *Artist;
-	wchar_t *Album;
-	wchar_t *Year;
-	wchar_t *Comment;
-	wchar_t *TrackNum; 
-	wchar_t *Genre;
+   wchar_t *Title;
+   wchar_t *Artist;
+   wchar_t *Album;
+   wchar_t *Year;
+   wchar_t *Comment;
+   wchar_t *TrackNum; 
+   wchar_t *Genre;
 } TID3InfoW;
 
 
 
 typedef struct {
-	int SamplingRate;
-	int ChannelNumber;
-	int VBR;
-	int Bitrate;
-	TStreamTime Length;
-	char *Description;
+   int SamplingRate;
+   int ChannelNumber;
+   int VBR;
+   int Bitrate;
+   TStreamTime Length;
+   char *Description;
 } TStreamInfo;
 
 
 typedef struct {
-	int SamplingRate;
-	int ChannelNumber;
-	int VBR;
-	int Bitrate;
-	TStreamTime Length;
-	wchar_t *Description;
+   int SamplingRate;
+   int ChannelNumber;
+   int VBR;
+   int Bitrate;
+   TStreamTime Length;
+   wchar_t *Description;
 } TStreamInfoW;
 
 
 typedef struct {
-	unsigned int NumberOfBuffers;
-	unsigned int NumberOfBytes;
+   unsigned int NumberOfBuffers;
+   unsigned int NumberOfBytes;
 } TStreamLoadInfo;
 
 
 enum TFFTGraphType
 {
-	gtLinesLeftOnTop = 0,
-	gtLinesRightOnTop,
-	gtAreaLeftOnTop,
-	gtAreaRightOnTop,
-	gtBarsLeftOnTop,
-	gtBarsRightOnTop,
-	gtSpectrum
+   gtLinesLeftOnTop = 0,
+   gtLinesRightOnTop,
+   gtAreaLeftOnTop,
+   gtAreaRightOnTop,
+   gtBarsLeftOnTop,
+   gtBarsRightOnTop,
+   gtSpectrum
 };
 
 
 enum TFFTWindow
 {
-	fwRectangular = 1,
-	fwHamming,
-	fwHann,
-	fwCosine,
-	fwLanczos,
-	fwBartlett,
-	fwTriangular,
-	fwGauss,
-	fwBartlettHann,
-	fwBlackman,
-	fwNuttall,
-	fwBlackmanHarris,
-	fwBlackmanNuttall,
-	fwFlatTop
+   fwRectangular = 1,
+   fwHamming,
+   fwHann,
+   fwCosine,
+   fwLanczos,
+   fwBartlett,
+   fwTriangular,
+   fwGauss,
+   fwBartlettHann,
+   fwBlackman,
+   fwNuttall,
+   fwBlackmanHarris,
+   fwBlackmanNuttall,
+   fwFlatTop
 };
 
 
 
 enum TFFTGraphParamID
 {
-	gpFFTPoints = 1,
-	gpGraphType,
-	gpWindow,
-	gpHorizontalScale,
-	gpSubgrid,
-	gpTransparency,
-	gpFrequencyScaleVisible,
-	gpDecibelScaleVisible,
-	gpFrequencyGridVisible,
-	gpDecibelGridVisible,
-	gpBgBitmapVisible,
-	gpBgBitmapHandle,
-	gpColor1,
-	gpColor2,
-	gpColor3,
-	gpColor4,
-	gpColor5,
-	gpColor6,
-	gpColor7,
-	gpColor8,
-	gpColor9,
-	gpColor10,
-	gpColor11,
-	gpColor12,
-	gpColor13,
-	gpColor14,
-	gpColor15,
-	gpColor16
+   gpFFTPoints = 1,
+   gpGraphType,
+   gpWindow,
+   gpHorizontalScale,
+   gpSubgrid,
+   gpTransparency,
+   gpFrequencyScaleVisible,
+   gpDecibelScaleVisible,
+   gpFrequencyGridVisible,
+   gpDecibelGridVisible,
+   gpBgBitmapVisible,
+   gpBgBitmapHandle,
+   gpColor1,
+   gpColor2,
+   gpColor3,
+   gpColor4,
+   gpColor5,
+   gpColor6,
+   gpColor7,
+   gpColor8,
+   gpColor9,
+   gpColor10,
+   gpColor11,
+   gpColor12,
+   gpColor13,
+   gpColor14,
+   gpColor15,
+   gpColor16
 
 };
 
@@ -582,25 +582,25 @@ enum TFFTGraphParamID
 enum  TCallbackMessage
 {
 
-	MsgStopAsync = 1,
-	MsgPlayAsync = 2,
-	MsgEnterLoopAsync = 4,
-	MsgExitLoopAsync = 8,
-	MsgEnterVolumeSlideAsync = 16,
-	MsgExitVolumeSlideAsync = 32,
-	MsgStreamBufferDoneAsync = 64,
-	MsgStreamNeedMoreDataAsync = 128,
-	MsgNextSongAsync = 256,
-	MsgStop = 65536,
-	MsgPlay = 131072,
-	MsgEnterLoop = 262144,
-	MsgExitLoop = 524288,
-	MsgEnterVolumeSlide = 1048576,
-	MsgExitVolumeSlide = 2097152,
-	MsgStreamBufferDone = 4194304,
-	MsgStreamNeedMoreData = 8388608,
-	MsgNextSong = 16777216,
-	MsgWaveBuffer = 33554432
+   MsgStopAsync = 1,
+   MsgPlayAsync = 2,
+   MsgEnterLoopAsync = 4,
+   MsgExitLoopAsync = 8,
+   MsgEnterVolumeSlideAsync = 16,
+   MsgExitVolumeSlideAsync = 32,
+   MsgStreamBufferDoneAsync = 64,
+   MsgStreamNeedMoreDataAsync = 128,
+   MsgNextSongAsync = 256,
+   MsgStop = 65536,
+   MsgPlay = 131072,
+   MsgEnterLoop = 262144,
+   MsgExitLoop = 524288,
+   MsgEnterVolumeSlide = 1048576,
+   MsgExitVolumeSlide = 2097152,
+   MsgStreamBufferDone = 4194304,
+   MsgStreamNeedMoreData = 8388608,
+   MsgNextSong = 16777216,
+   MsgWaveBuffer = 33554432
 };
 
 
@@ -608,40 +608,40 @@ typedef int  (__stdcall * TCallbackFunc)(void* instance, void *user_data, TCallb
 
 
 enum TSettingID {
-	sidWaveBufferSize = 1,
-	sidAccurateLength = 2,
-	sidAccurateSeek = 3,
-	sidSamplerate = 4,
-	sidChannelNumber = 5,
-	sidBitPerSample = 6,
-	sidBigEndian = 7,
-	sidWaveInBufferSize = 8
+   sidWaveBufferSize = 1,
+   sidAccurateLength = 2,
+   sidAccurateSeek = 3,
+   sidSamplerate = 4,
+   sidChannelNumber = 5,
+   sidBitPerSample = 6,
+   sidBigEndian = 7,
+   sidWaveInBufferSize = 8
 };
 
 // =============================================================================================================
 //
-//	INTERFACE FOR ZPlay CLASS
+// INTERFACE FOR ZPlay CLASS
 //
 // =============================================================================================================
 
-class ZPlay
+class ZPlay // NOLINT
 {
-	public:
+   public:
 
 
 virtual int __stdcall SetSettings(TSettingID nSettingID, int nValue) = 0;
 virtual int __stdcall GetSettings(TSettingID nSettingID) = 0;
 virtual int __stdcall GetVersion() = 0;
-virtual char * __stdcall GetError() = 0;	
+virtual char * __stdcall GetError() = 0;  
 virtual wchar_t * __stdcall GetErrorW() = 0;
-virtual TStreamFormat __stdcall GetFileFormat(const char *pchFileName) = 0;	
+virtual TStreamFormat __stdcall GetFileFormat(const char *pchFileName) = 0;   
 virtual TStreamFormat __stdcall GetFileFormatW(const wchar_t *pchFileName) = 0;
 virtual int __stdcall EnumerateWaveOut() = 0;
 virtual int __stdcall GetWaveOutInfo(unsigned int nIndex, TWaveOutInfo *pWaveOutInfo) = 0;
 virtual int __stdcall GetWaveOutInfoW(unsigned int nIndex, TWaveOutInfoW *pWaveOutInfo) = 0;
 virtual int __stdcall SetWaveOutDevice(unsigned int nIndex) = 0;
-virtual int __stdcall OpenFile(const char *sFileName, TStreamFormat nFormat)= 0;	
-virtual int __stdcall OpenFileW(const wchar_t *sFileName, TStreamFormat nFormat)= 0;		
+virtual int __stdcall OpenFile(const char *sFileName, TStreamFormat nFormat)= 0; 
+virtual int __stdcall OpenFileW(const wchar_t *sFileName, TStreamFormat nFormat)= 0;      
 virtual int __stdcall AddFile(const char *sFileName, TStreamFormat nFormat)= 0;
 virtual int __stdcall AddFileW(const wchar_t *sFileName, TStreamFormat nFormat)= 0;
 virtual int __stdcall OpenStream(int fBuffered, int fDynamic, const void *sMemStream, unsigned int nStreamSize, TStreamFormat nFormat) = 0;
@@ -672,13 +672,13 @@ virtual int __stdcall EnableEqualizer(int fEnable) = 0;
 virtual int __stdcall SetEqualizerPoints(int *pnFreqPoint, int nNumOfPoints) = 0;
 virtual int __stdcall GetEqualizerPoints(int *pnFreqPoint, int nFreqPointNumber) = 0;
 virtual int __stdcall SetEqualizerParam(int nPreAmpGain, int *pnBandGain, int nNumberOfBands) = 0;
-virtual int __stdcall GetEqualizerParam(int *pnPreAmpGain, int *pnBandGain,	int nNumberOfBands) = 0;
+virtual int __stdcall GetEqualizerParam(int *pnPreAmpGain, int *pnBandGain,   int nNumberOfBands) = 0;
 virtual int __stdcall SetEqualizerPreampGain(int nGain) = 0;
 virtual int __stdcall GetEqualizerPreampGain() = 0; 
 virtual int __stdcall SetEqualizerBandGain(int nBandIndex, int nGain) = 0;
 virtual int __stdcall GetEqualizerBandGain(int nBandIndex) = 0;
 virtual int __stdcall LoadID3(TID3Version nId3Version, TID3Info *pId3Info) = 0;
-virtual int __stdcall LoadID3W(TID3Version nId3Version,	TID3InfoW *pId3Info) = 0;
+virtual int __stdcall LoadID3W(TID3Version nId3Version,  TID3InfoW *pId3Info) = 0;
 virtual int __stdcall LoadFileID3(const char *pchFileName, TStreamFormat nFormat, TID3Version nId3Version, TID3Info *pId3Info) = 0;
 virtual int __stdcall LoadFileID3W(const wchar_t *pchFileName, TStreamFormat nFormat, TID3Version nId3Version, TID3InfoW *pId3Info) = 0;
 virtual int __stdcall EnableEcho(int fEnable) = 0;
@@ -724,7 +724,7 @@ virtual int __stdcall SetWaveOutFileW(const wchar_t *sFileName, TStreamFormat nF
 
 // =============================================================================================================
 //
-//	END OF INTERFACE FOR ZPlay CLASS
+// END OF INTERFACE FOR ZPlay CLASS
 //
 // =============================================================================================================
 
@@ -735,7 +735,7 @@ extern "C" {
 
 // =============================================================================================================
 //
-//	CLASS FACTORY FOR ZPlay INTERFACE
+// CLASS FACTORY FOR ZPlay INTERFACE
 //
 // =============================================================================================================
 
@@ -745,41 +745,41 @@ W_DECLSPEC  ZPlay *  __stdcall CreateZPlay();
 
 // =============================================================================================================
 //
-//	END OF CLASS FACTORY FOR ZPLAY INTERFACE
+// END OF CLASS FACTORY FOR ZPLAY INTERFACE
 //
 // =============================================================================================================
 
 
 // =============================================================================================================
 //
-//	C WRAPPER FOR ZPlay CLASS
+// C WRAPPER FOR ZPlay CLASS
 //
 // =============================================================================================================
 
 W_DECLSPEC ZPLAY_HANDLE __stdcall zplay_CreateZPlay(); 
 W_DECLSPEC int __stdcall zplay_DestroyZPlay(ZPLAY_HANDLE handle); 
 W_DECLSPEC int __stdcall zplay_GetVersion(ZPLAY_HANDLE handle);
-W_DECLSPEC char * __stdcall zplay_GetError(ZPLAY_HANDLE handle);				
+W_DECLSPEC char * __stdcall zplay_GetError(ZPLAY_HANDLE handle);           
 W_DECLSPEC wchar_t * __stdcall zplay_GetErrorW(ZPLAY_HANDLE handle);
 W_DECLSPEC TStreamFormat __stdcall zplay_GetFileFormat(ZPLAY_HANDLE handle, const char *pchFileName);
 W_DECLSPEC TStreamFormat __stdcall zplay_GetFileFormatW(ZPLAY_HANDLE handle, const wchar_t *pchFileName);
 W_DECLSPEC int __stdcall zplay_EnumerateWaveOut(ZPLAY_HANDLE handle);
-W_DECLSPEC int __stdcall zplay_GetWaveOutInfo(ZPLAY_HANDLE handle, unsigned int nIndex,	TWaveOutInfo *pWaveOutInfo);
-W_DECLSPEC int __stdcall zplay_GetWaveOutInfoW(ZPLAY_HANDLE handle,unsigned int nIndex,	TWaveOutInfoW *pWaveOutInfo);
+W_DECLSPEC int __stdcall zplay_GetWaveOutInfo(ZPLAY_HANDLE handle, unsigned int nIndex,   TWaveOutInfo *pWaveOutInfo);
+W_DECLSPEC int __stdcall zplay_GetWaveOutInfoW(ZPLAY_HANDLE handle,unsigned int nIndex,   TWaveOutInfoW *pWaveOutInfo);
 W_DECLSPEC int __stdcall zplay_SetWaveOutDevice(ZPLAY_HANDLE handle, unsigned int nIndex);
 W_DECLSPEC int __stdcall zplay_OpenFile(ZPLAY_HANDLE handle, const char *sFileName, TStreamFormat nFormat);
-W_DECLSPEC int __stdcall zplay_OpenFileW(ZPLAY_HANDLE handle, const wchar_t *sFileName, TStreamFormat nFormat);	
+W_DECLSPEC int __stdcall zplay_OpenFileW(ZPLAY_HANDLE handle, const wchar_t *sFileName, TStreamFormat nFormat);   
 W_DECLSPEC int __stdcall zplay_AddFile(ZPLAY_HANDLE handle, const char *sFileName, TStreamFormat nFormat);
 W_DECLSPEC int __stdcall zplay_AddFileW(ZPLAY_HANDLE handle, const wchar_t *sFileName, TStreamFormat nFormat);
 W_DECLSPEC int __stdcall zplay_OpenStream(ZPLAY_HANDLE handle, int fBuffered, int fManaged, const void *sMemStream, unsigned int nStreamSize, TStreamFormat nFormat);
 W_DECLSPEC int __stdcall zplay_PushDataToStream(ZPLAY_HANDLE handle, const void *sMemNewData, unsigned int nNewDataize);
 W_DECLSPEC int __stdcall zplay_IsStreamDataFree(ZPLAY_HANDLE handle, const void *sMemNewData);
 W_DECLSPEC void __stdcall zplay_GetDynamicStreamLoad(ZPLAY_HANDLE handle,TStreamLoadInfo *pStreamLoadInfo);
-W_DECLSPEC void __stdcall zplay_GetStreamInfo(ZPLAY_HANDLE handle,	TStreamInfo *pInfo);
+W_DECLSPEC void __stdcall zplay_GetStreamInfo(ZPLAY_HANDLE handle,   TStreamInfo *pInfo);
 W_DECLSPEC void __stdcall zplay_GetStreamInfoW(ZPLAY_HANDLE handle, TStreamInfoW *pInfo);
 W_DECLSPEC int __stdcall zplay_Close(ZPLAY_HANDLE handle);
 W_DECLSPEC int __stdcall zplay_Play(ZPLAY_HANDLE handle);
-W_DECLSPEC int __stdcall zplay_PlayLoop(ZPLAY_HANDLE handle, TTimeFormat fFormatStartTime, TStreamTime *pStartTime, TTimeFormat fFormatEndTime, TStreamTime *pEndTime,	unsigned int nNumOfCycles, unsigned int fContinuePlaying);
+W_DECLSPEC int __stdcall zplay_PlayLoop(ZPLAY_HANDLE handle, TTimeFormat fFormatStartTime, TStreamTime *pStartTime, TTimeFormat fFormatEndTime, TStreamTime *pEndTime,  unsigned int nNumOfCycles, unsigned int fContinuePlaying);
 W_DECLSPEC int __stdcall zplay_Seek(ZPLAY_HANDLE handle, TTimeFormat fFormat, TStreamTime *pTime, TSeekMethod nMoveMethod);
 W_DECLSPEC int __stdcall zplay_ReverseMode(ZPLAY_HANDLE handle, int fEnable);
 W_DECLSPEC int __stdcall zplay_Stop(ZPLAY_HANDLE handle);
@@ -792,13 +792,13 @@ W_DECLSPEC void __stdcall zplay_GetMasterVolume(ZPLAY_HANDLE handle, unsigned in
 W_DECLSPEC void __stdcall zplay_GetPlayerVolume(ZPLAY_HANDLE handle, unsigned int *pnLeftVolume, unsigned int *pnRightVolume);
 W_DECLSPEC int __stdcall zplay_GetBitrate(ZPLAY_HANDLE handle, int fAverage);
 W_DECLSPEC void __stdcall zplay_GetStatus(ZPLAY_HANDLE handle, TStreamStatus *pStatus);
-W_DECLSPEC int __stdcall zplay_MixChannels(ZPLAY_HANDLE handle, int fEnable, unsigned int nLeftPercent, unsigned int nRightPercent);	
+W_DECLSPEC int __stdcall zplay_MixChannels(ZPLAY_HANDLE handle, int fEnable, unsigned int nLeftPercent, unsigned int nRightPercent);   
 W_DECLSPEC void __stdcall zplay_GetVUData(ZPLAY_HANDLE handle, unsigned int *pnLeftChannel,unsigned int *pnRightChannel);
 W_DECLSPEC int __stdcall zplay_SlideVolume(ZPLAY_HANDLE handle, int fFormatStart, TStreamTime *pTimeStart, unsigned int nStartVolumeLeft, unsigned int nStartVolumeRight, int fFormatEnd, TStreamTime *pTimeEnd, unsigned int nEndVolumeLeft, unsigned int nEndVolumeRight);
 W_DECLSPEC int __stdcall zplay_EnableEqualizer(ZPLAY_HANDLE handle, int fEnable);
 W_DECLSPEC int __stdcall zplay_SetEqualizerPoints(ZPLAY_HANDLE handle, int *pnFreqPoint, int nNumOfPoints);
 W_DECLSPEC int __stdcall zplay_GetEqualizerPoints(ZPLAY_HANDLE handle, int *pnFreqPoint, int nFreqPointNumber);
-W_DECLSPEC int __stdcall zplay_SetEqualizerParam(ZPLAY_HANDLE handle, int nPreAmpGain, int *pnBandGain,	int nNumberOfBands);
+W_DECLSPEC int __stdcall zplay_SetEqualizerParam(ZPLAY_HANDLE handle, int nPreAmpGain, int *pnBandGain,  int nNumberOfBands);
 W_DECLSPEC int __stdcall zplay_GetEqualizerParam(ZPLAY_HANDLE handle, int *pnPreAmpGain, int *pnBandGain, int nNumberOfBands);
 W_DECLSPEC int __stdcall zplay_LoadID3(ZPLAY_HANDLE handle, TID3Version nId3Version, TID3Info *pId3Info);
 W_DECLSPEC int __stdcall zplay_LoadID3W(ZPLAY_HANDLE handle, TID3Version nId3Version, TID3InfoW *pId3Info);
@@ -809,16 +809,16 @@ W_DECLSPEC int __stdcall zplay_SetEchoParam(ZPLAY_HANDLE handle, TEchoEffect *pE
 W_DECLSPEC int __stdcall zplay_GetEchoParam(ZPLAY_HANDLE handle, TEchoEffect *pEchoEffectm, int nNumberOfEffects);
 W_DECLSPEC int __stdcall zplay_SetCallbackFunc(ZPLAY_HANDLE handle, TCallbackFunc pCallbackFunc, TCallbackMessage nMessages, void *user_data);
 W_DECLSPEC int __stdcall zplay_GetFFTData(
-			ZPLAY_HANDLE handle,
-			int nFFTPoints,
-			TFFTWindow nFFTWindow,
-			int *pnHarmonicNumber,
-			int *pnHarmonicFreq,
-			int *pnLeftAmplitude,
-			int *pnRightAmplitude,
-			int *pnLeftPhase,
-			int *pnRightPhase
-		);  	
+         ZPLAY_HANDLE handle,
+         int nFFTPoints,
+         TFFTWindow nFFTWindow,
+         int *pnHarmonicNumber,
+         int *pnHarmonicFreq,
+         int *pnLeftAmplitude,
+         int *pnRightAmplitude,
+         int *pnLeftPhase,
+         int *pnRightPhase
+      );    
 W_DECLSPEC int __stdcall zplay_SetRate(ZPLAY_HANDLE handle, unsigned int nRate);
 W_DECLSPEC unsigned int __stdcall zplay_GetRate(ZPLAY_HANDLE handle);
 W_DECLSPEC int __stdcall zplay_SetPitch(ZPLAY_HANDLE handle, unsigned int nPitch);
